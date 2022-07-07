@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import Footer from '../Components/Footer'
 
 const Wrapper = styled.main`
   background-color: #282c34;
@@ -37,14 +38,13 @@ const Home = () => {
           This is a <TextSpan>boilerplate</TextSpan> for module federation
         </TextParagraph>
         <TextLink
-          className="App-link mt-5 hover:underline"
           href="https://webpack.js.org/concepts/module-federation/"
           target="_blank"
-          rel="noopener noreferrer"
         >
           Learn Module Federation
         </TextLink>
       </Wrapper>
+      <Footer />
     </>
   )
 }

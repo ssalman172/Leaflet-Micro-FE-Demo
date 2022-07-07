@@ -7,7 +7,7 @@ module.exports = (env) => {
   return {
     mode: "development",
     devServer: {
-      port: 3003,
+      port: 3001,
       static: {
         directory: path.join(__dirname, 'public'),
       },
@@ -44,7 +44,7 @@ module.exports = (env) => {
     },
     plugins: [
       new ModuleFederationPlugin({
-        name: "Sidebar",
+        name: "Map",
         filename:
           'remoteEntry.js',
         shared: {

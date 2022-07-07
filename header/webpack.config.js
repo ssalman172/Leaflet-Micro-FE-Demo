@@ -44,7 +44,7 @@ module.exports = (env) => {
     },
     plugins: [
       new ModuleFederationPlugin({
-        name: "EXAMPLE_PLEASE_CHANGE",
+        name: "Header",
         filename:
           'remoteEntry.js',
         shared: {
