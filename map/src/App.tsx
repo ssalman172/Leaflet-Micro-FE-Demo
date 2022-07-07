@@ -1,11 +1,11 @@
 import React from 'react';
 import './App.css';
-import Map from './Pages/Map';
+import LeafletMap from './Pages/LeafletMap';
 
 function App() {
   return (
     <div className="App">
-      <Map />
+      <LeafletMap />
     </div>
   );
 }

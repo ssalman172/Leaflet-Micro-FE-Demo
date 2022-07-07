@@ -48,6 +48,7 @@ module.exports = (env) => {
         filename:
           'remoteEntry.js',
         remotes: {
+          LeafletMap: "LeafletMap@http://localhost:3001/remoteEntry.js",
           HeaderFooter: "HeaderFooter@http://localhost:3002/remoteEntry.js",
           Sidebar: "Sidebar@http://localhost:3003/remoteEntry.js",
         },

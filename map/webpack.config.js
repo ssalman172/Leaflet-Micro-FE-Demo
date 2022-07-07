@@ -44,9 +44,12 @@ module.exports = (env) => {
     },
     plugins: [
       new ModuleFederationPlugin({
-        name: "Map",
+        name: "LeafletMap",
         filename:
           'remoteEntry.js',
+        exposes: {
+          "./LeafletMap": "./src/Pages/LeafletMap",
+        },
         shared: {
           ...dependencies,
           react: {
