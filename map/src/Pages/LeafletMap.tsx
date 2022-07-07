@@ -1,10 +1,11 @@
 import React from 'react'
 import styled from 'styled-components'
-import { MapContainer, Marker, TileLayer, ImageOverlay, Popup } from 'react-leaflet'
+import { MapContainer, Marker, TileLayer, ImageOverlay, Popup, LayersControl } from 'react-leaflet'
 import 'leaflet/dist/leaflet.css';
 import { renderToStaticMarkup } from 'react-dom/server';
 import L, { divIcon } from 'leaflet';
 import { Airplane } from 'react-ionicons';
+const { BaseLayer } = LayersControl;
 
 const Wrapper = styled.main`
   display: flex;
@@ -33,15 +34,25 @@ const LeafletMap = () => {
 
   const showOverlay = () => {
     return <ImageOverlay url="./assets/len.jpg" bounds={latLngBounds} />
-  };
+  }
 
   return (
     <Wrapper>
       <MapContainer center={[-6.949496719488826, 107.61966920913646]} zoom={17} scrollWheelZoom={true}>
-        <TileLayer
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        />
+        <LayersControl>
+          <BaseLayer checked name="OpenStreetMap">
+            <TileLayer
+              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+              attribution="&copy; <a href=&quot;https://www.openstreetmap.org/copyright&quot;>OpenStreetMap</a> contributors"
+            />
+          </BaseLayer>
+          <BaseLayer name="NASA Gibs Blue Marble">
+            <TileLayer
+              url="https://gibs-{s}.earthdata.nasa.gov/wmts/epsg3857/best/BlueMarble_ShadedRelief_Bathymetry/default//EPSG3857_500m/{z}/{y}/{x}.jpeg"
+              attribution="&copy; NASA Blue Marble, image service by OpenGeo"
+            />
+          </BaseLayer>
+        </LayersControl>
         <Marker eventHandlers={{ click: showOverlay }} position={[-6.949496719488826, 107.61966920913646]} icon={customMarkerIcon}>
           <Popup>PT Len Industri</Popup>
         </Marker>
