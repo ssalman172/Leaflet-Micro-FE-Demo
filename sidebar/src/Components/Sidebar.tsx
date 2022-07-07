@@ -1,6 +1,13 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import { IoLayersOutline, IoMapOutline } from "react-icons/io5";
+import { 
+  IoLayersOutline,
+  IoMapOutline,
+  IoChevronForwardCircleOutline,
+  IoLayersSharp,
+  IoLayers,
+} from "react-icons/io5";
+import SidebarContent from './SidebarContent';
 
 interface NavItemProps {
   isActive?: boolean
@@ -21,6 +28,7 @@ const Wrapper = styled.div`
   width: max-content;
   margin-left: 0px;
   border-radius: 12px 0 0 12px;
+  user-select: none;
 `
 
 const WrapperLeft = styled.div`
@@ -55,6 +63,7 @@ const NavigationListItem = styled.div<NavItemProps>`
 
   &:hover {
     background: #161e2e;
+    cursor: pointer;
   }
 `
 
@@ -70,7 +79,7 @@ const CloseButton = styled.div<ToggleBtnProps>`
   font-size: 2rem;
   padding: 12px;
   margin: 12px 0;
-  border-radius: 12px;
+  border-radius: 9999px;
   transform: ${(NavItemProps) => NavItemProps.isToggled ? 'rotate(180deg)' : 'rotate(0deg)'};
   transition: transform 0.2s linear;
 
@@ -80,7 +89,7 @@ const CloseButton = styled.div<ToggleBtnProps>`
 `
 
 const Sidebar = () => {
-  const [currentSidebar, setCurrentSidebar] = useState<string>('layer');
+  const [currentSidebar, setCurrentSidebar] = useState<string>('layer1');
   const [sidebarToggle, setSidebarToggle] = useState<boolean>(true);
 
   const handleOnClick = (name: string) => {
@@ -100,25 +109,25 @@ const Sidebar = () => {
             <IoMapOutline />
           </Logo>
           <NavigationList>
-            <NavigationListItem name='layer' currentSidebar={currentSidebar} onClick={() => handleOnClick('layer')}>
+            <NavigationListItem name='layer1' currentSidebar={currentSidebar} onClick={() => handleOnClick('layer1')}>
               <IoLayersOutline />
             </NavigationListItem>
             <NavigationListItem name='layer2' currentSidebar={currentSidebar} onClick={() => handleOnClick('layer2')}>
-              <IoLayersOutline />
+              <IoLayersSharp />
             </NavigationListItem>
             <NavigationListItem name='layer3' currentSidebar={currentSidebar} onClick={() => handleOnClick('layer3')}>
-              <IoLayersOutline />
+              <IoLayers />
             </NavigationListItem>
           </NavigationList>
           <CloseButton isToggled={sidebarToggle} onClick={() => handleToggleSidebar()}>
-            <IoLayersOutline />
+            <IoChevronForwardCircleOutline />
           </CloseButton>
         </ContentLeft>
       </WrapperLeft>
-      {sidebarToggle &&
-        <WrapperRight>
-          Hi
-        </WrapperRight>}
+      { sidebarToggle &&
+      <WrapperRight>
+        <SidebarContent currentSidebar={currentSidebar}/>
+      </WrapperRight>}
     </Wrapper>
   )
 }

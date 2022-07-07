@@ -7,7 +7,7 @@ const LeafletMap = React.lazy(() => import("LeafletMap/LeafletMap"));
 
 const Wrapper = styled.main`
   display: flex;
-  justify-content: center;
+  margin-left: 48px;
   font-size: calc(10px + 2vmin);
   color: white;
   margin-top: 1rem;
