@@ -4,6 +4,7 @@ import { MapContainer, Marker, TileLayer, ImageOverlay, Popup } from 'react-leaf
 import 'leaflet/dist/leaflet.css';
 import { renderToStaticMarkup } from 'react-dom/server';
 import L, { divIcon } from 'leaflet';
+import { Airplane } from 'react-ionicons';
 
 const Wrapper = styled.main`
   display: flex;
@@ -12,21 +13,18 @@ const Wrapper = styled.main`
   margin: auto;
 `
 
-const MapWrapper = styled.div`
-  background: #282c34;
-  padding: 2%;
-  border-radius: 4px;
-  width: 80vw;
-  min-height: 80vh;
-`
-
 const Title = styled.h1`
   color: #eee;
   margin-top: 0;
 `
 
 const LeafletMap = () => {
-  const iconMarkup = renderToStaticMarkup(<img src='./assets/yellow-plane.svg' height={30} />);
+  const iconMarkup = renderToStaticMarkup(<Airplane
+    color={'#d83430'}
+    title={""}
+    height="30px"
+    width="30px"
+  />);
   const customMarkerIcon = divIcon({
     html: iconMarkup,
   });
@@ -38,18 +36,15 @@ const LeafletMap = () => {
 
   return (
     <Wrapper>
-      <MapWrapper>
-        <Title>The Map</Title>
-        <MapContainer center={[-6.949496719488826, 107.61966920913646]} zoom={17} scrollWheelZoom={true}>
-          <TileLayer
-            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          />
-          <Marker eventHandlers={{ click: showOverlay }} position={[-6.949496719488826, 107.61966920913646]} icon={customMarkerIcon}>
-            <Popup>PT Len Industri</Popup>
-          </Marker>
-        </MapContainer>
-      </MapWrapper>
+      <MapContainer center={[-6.949496719488826, 107.61966920913646]} zoom={17} scrollWheelZoom={true}>
+        <TileLayer
+          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        />
+        <Marker eventHandlers={{ click: showOverlay }} position={[-6.949496719488826, 107.61966920913646]} icon={customMarkerIcon}>
+          <Popup>PT Len Industri</Popup>
+        </Marker>
+      </MapContainer>
     </Wrapper>
   )
 }

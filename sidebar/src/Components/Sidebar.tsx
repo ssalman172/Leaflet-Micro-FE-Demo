@@ -24,13 +24,13 @@ const Wrapper = styled.div`
 `
 
 const WrapperLeft = styled.div`
-  width: 100px;
+  width: 60px;
   border-right: 1px solid #161e2e;
   position: relative;
 `
 
 const WrapperRight = styled.div`
-  width: 400px;
+  width: 240px;
 `
 
 const ContentLeft = styled.div`
@@ -51,7 +51,7 @@ const NavigationListItem = styled.div<NavItemProps>`
   padding: 12px;
   margin: 12px 0;
   border-radius: 12px;
-  background: ${NavItemProps => NavItemProps.name === NavItemProps.currentSidebar? "#161e2e" : "none"};
+  background: ${NavItemProps => NavItemProps.name === NavItemProps.currentSidebar ? "#161e2e" : "none"};
 
   &:hover {
     background: #161e2e;
@@ -115,10 +115,10 @@ const Sidebar = () => {
           </CloseButton>
         </ContentLeft>
       </WrapperLeft>
-      { sidebarToggle &&
-      <WrapperRight>
-        Hi
-      </WrapperRight>}
+      {sidebarToggle &&
+        <WrapperRight>
+          Hi
+        </WrapperRight>}
     </Wrapper>
   )
 }

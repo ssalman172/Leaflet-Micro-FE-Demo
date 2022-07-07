@@ -6,7 +6,6 @@ interface Props {
 }
 
 const Wrapper = styled.header`
-  position: fixed;
   width: 100%;
   top: 0;
   font-family: 'Sora', sans-serif;
@@ -36,7 +35,7 @@ const NavText = styled.h4`
 
 `
 
-const Header = ({color}: Props) => {
+const Header = ({ color }: Props) => {
   return (
     <Wrapper>
       <Nav color={color}>
