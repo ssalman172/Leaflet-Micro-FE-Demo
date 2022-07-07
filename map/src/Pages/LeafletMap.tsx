@@ -10,7 +10,7 @@ const Wrapper = styled.main`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: auto;
+  margin-left: 0;
 `
 
 const Title = styled.h1`
@@ -21,6 +21,7 @@ const Title = styled.h1`
 const LeafletMap = () => {
   const iconMarkup = renderToStaticMarkup(<Airplane
     color={'#d83430'}
+    rotate
     title={""}
     height="30px"
     width="30px"
