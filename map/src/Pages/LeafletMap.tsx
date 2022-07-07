@@ -38,7 +38,7 @@ const LeafletMap = () => {
 
   return (
     <Wrapper>
-      <MapContainer center={[-6.949496719488826, 107.61966920913646]} zoom={17} scrollWheelZoom={true}>
+      <MapContainer center={[-6.949496719488826, 107.61966920913646]} zoom={6} scrollWheelZoom={true}>
         <LayersControl>
           <BaseLayer checked name="OpenStreetMap">
             <TileLayer
@@ -50,6 +50,7 @@ const LeafletMap = () => {
             <TileLayer
               url="https://gibs-{s}.earthdata.nasa.gov/wmts/epsg3857/best/BlueMarble_ShadedRelief_Bathymetry/default//EPSG3857_500m/{z}/{y}/{x}.jpeg"
               attribution="&copy; NASA Blue Marble, image service by OpenGeo"
+              maxNativeZoom={8}
             />
           </BaseLayer>
         </LayersControl>
