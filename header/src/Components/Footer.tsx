@@ -1,23 +1,29 @@
 import React from 'react'
 import styled from 'styled-components'
 
-const FooterWrapper = styled.footer`
-  background: #222;
-  color: #eee;
-  min-height: 0;
+interface Props {
+  background?: string,
+  color?: string
+}
+
+const Wrapper = styled.footer<Props>`
+  display: flex;
+  padding: 10px 48px;
+  color: ${props => props.color || "black" };
+  background: ${props => props.background || "white" };
+  font-family: 'Sora', sans-serif;
+  position:absolute;
+  bottom:0;
   width: 100%;
-`
-const CopyrightText = styled.p`
-  margin: 0;
-  font-size: 11px;
+  box-sizing: border-box;
 `
 
-const Footer = () => {
+const Footer = ({background, color}: Props ) => {
   return (
-    <FooterWrapper>
-      <CopyrightText>&copy; 2022 KP Len | All Rights Reserved</CopyrightText>
-    </FooterWrapper>
-  );
-};
+    <Wrapper color={color} background={background}>
+      <p>Copyright &copy; 2022 Salman & Faza</p>
+    </Wrapper>
+  )
+}
 
-export default Footer;
+export default Footer

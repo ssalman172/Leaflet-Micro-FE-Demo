@@ -47,6 +47,9 @@ module.exports = (env) => {
         name: "Sidebar",
         filename:
           'remoteEntry.js',
+        exposes: {
+          "./Sidebar": "./src/Components/Sidebar",
+        },
         shared: {
           ...dependencies,
           react: {

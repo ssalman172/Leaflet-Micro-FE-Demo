@@ -44,9 +44,13 @@ module.exports = (env) => {
     },
     plugins: [
       new ModuleFederationPlugin({
-        name: "Header",
+        name: "HeaderFooter",
         filename:
           'remoteEntry.js',
+        exposes: {
+          "./Header": "./src/Components/Header",
+          "./Footer": "./src/Components/Footer",
+        },
         shared: {
           ...dependencies,
           react: {

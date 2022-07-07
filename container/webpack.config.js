@@ -47,6 +47,10 @@ module.exports = (env) => {
         name: "Container",
         filename:
           'remoteEntry.js',
+        remotes: {
+          HeaderFooter: "HeaderFooter@http://localhost:3002/remoteEntry.js",
+          Sidebar: "Sidebar@http://localhost:3003/remoteEntry.js",
+        },
         shared: {
           ...dependencies,
           react: {
