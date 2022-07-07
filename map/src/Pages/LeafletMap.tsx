@@ -53,6 +53,19 @@ const LeafletMap = () => {
               maxNativeZoom={8}
             />
           </BaseLayer>
+          <BaseLayer name="Stadia Aliade Smooth Dark">
+            <TileLayer
+              url="https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png"
+              attribution="&copy; Stadia Maps, &copy; OpenMapTiles &copy; OpenStreetMap contributors"
+              maxNativeZoom={20}
+            />
+          </BaseLayer>
+          <BaseLayer name="Esri Worldmagery">
+            <TileLayer
+              url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}.png"
+              attribution="Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community"
+            />
+          </BaseLayer>
         </LayersControl>
         <Marker eventHandlers={{ click: showOverlay }} position={[-6.949496719488826, 107.61966920913646]} icon={customMarkerIcon}>
           <Popup>PT Len Industri</Popup>
