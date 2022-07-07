@@ -9,16 +9,15 @@ interface Props {
 const Wrapper = styled.footer<Props>`
   display: flex;
   padding: 10px 48px;
-  color: ${props => props.color || "black" };
-  background: ${props => props.background || "white" };
+  color: ${props => props.color || "black"};
+  background: ${props => props.background || "white"};
   font-family: 'Sora', sans-serif;
-  position:absolute;
   bottom:0;
   width: 100%;
   box-sizing: border-box;
 `
 
-const Footer = ({background, color}: Props ) => {
+const Footer = ({ background, color }: Props) => {
   return (
     <Wrapper color={color} background={background}>
       <p>Copyright &copy; 2022 Salman & Faza</p>

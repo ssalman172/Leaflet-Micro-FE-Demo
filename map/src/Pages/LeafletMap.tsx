@@ -25,7 +25,7 @@ const Title = styled.h1`
   margin-top: 0;
 `
 
-const Map = () => {
+const LeafletMap = () => {
   const iconMarkup = renderToStaticMarkup(<img src='./assets/yellow-plane.svg' height={30} />);
   const customMarkerIcon = divIcon({
     html: iconMarkup,
@@ -54,4 +54,4 @@ const Map = () => {
   )
 }
 
-export default Map
+export default LeafletMap
