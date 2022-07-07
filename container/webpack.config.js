@@ -7,7 +7,7 @@ module.exports = (env) => {
   return {
     mode: "development",
     devServer: {
-      port: 3009,
+      port: 3000,
       static: {
         directory: path.join(__dirname, 'public'),
       },
