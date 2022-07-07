@@ -10,7 +10,7 @@ const Wrapper = styled.main`
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
-  margin-top: 8rem;
+  margin-top: 1rem;
 `
 
 const Home = () => {

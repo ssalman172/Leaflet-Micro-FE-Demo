@@ -19,7 +19,7 @@ const Wrapper = styled.div`
   color: white;
   min-height: 80vh;
   width: max-content;
-  margin-left: 48px;
+  margin-left: 0px;
   border-radius: 12px 0 0 12px;
 `
 
