@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react';
+import React from 'react';
 import './App.css';
 import Home from './Pages/Home';
 // @ts-ignore
@@ -10,13 +10,9 @@ const Footer = React.lazy(() => import("HeaderFooter/Footer"));
 function App() {
   return (
     <div className="App">
-      <Suspense fallback={'loading..'}>
-        <Header />
-      </Suspense>
+      <Header />
       <Home />
-      <Suspense fallback={'loading..'}>
-        <Footer background="#282c34" color="#eeeded" />
-      </Suspense>
+      <Footer background="#282c34" color="#eeeded" />
     </div>
   );
 }
