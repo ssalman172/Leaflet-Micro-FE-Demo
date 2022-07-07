@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import { 
+import {
   IoLayersOutline,
   IoMapOutline,
   IoChevronForwardCircleOutline,
@@ -124,10 +124,10 @@ const Sidebar = () => {
           </CloseButton>
         </ContentLeft>
       </WrapperLeft>
-      { sidebarToggle &&
-      <WrapperRight>
-        <SidebarContent currentSidebar={currentSidebar}/>
-      </WrapperRight>}
+      {sidebarToggle &&
+        <WrapperRight>
+          <SidebarContent currentSidebar={currentSidebar} />
+        </WrapperRight>}
     </Wrapper>
   )
 }

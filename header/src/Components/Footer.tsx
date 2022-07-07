@@ -15,7 +15,6 @@ const Wrapper = styled.footer<Props>`
   bottom:0;
   width: 100%;
   box-sizing: border-box;
-  position: absolute;
   bottom: 0;
 `
 
