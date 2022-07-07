@@ -15,5 +15,15 @@
   "bugs": {
     "url": "https://github.com/ssalman172/Leaflet-Micro-FE-Demo/issues"
   },
-  "homepage": "https://github.com/ssalman172/Leaflet-Micro-FE-Demo#readme"
+  "homepage": "https://github.com/ssalman172/Leaflet-Micro-FE-Demo#readme",
+  "dependencies": {
+    "@emotion/react": "^11.9.3",
+    "@emotion/styled": "^11.9.3",
+    "@fortawesome/fontawesome-svg-core": "^6.1.1",
+    "@mui/icons-material": "^5.8.4",
+    "@mui/material": "^5.8.7",
+    "@mui/styled-engine-sc": "^5.8.0",
+    "react-icons": "^4.4.0",
+    "styled-components": "^5.3.5"
+  }
 }
