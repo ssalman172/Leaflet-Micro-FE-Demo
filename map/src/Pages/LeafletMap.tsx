@@ -40,13 +40,13 @@ const LeafletMap = () => {
     <Wrapper>
       <MapContainer center={[-6.949496719488826, 107.61966920913646]} zoom={6} scrollWheelZoom={true}>
         <LayersControl>
-          <BaseLayer checked name="OpenStreetMap">
+          <BaseLayer name="OpenStreetMap">
             <TileLayer
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
               attribution="&copy; <a href=&quot;https://www.openstreetmap.org/copyright&quot;>OpenStreetMap</a> contributors"
             />
           </BaseLayer>
-          <BaseLayer name="Stadia Aliade Smooth Dark">
+          <BaseLayer checked name="Stadia Aliade Smooth Dark">
             <TileLayer
               url="https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png"
               attribution="&copy; Stadia Maps, &copy; OpenMapTiles &copy; OpenStreetMap contributors"
