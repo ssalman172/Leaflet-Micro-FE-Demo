@@ -91,7 +91,7 @@ const CloseButton = styled.div<SidebarProps>`
 
 const Sidebar = () => {
   const [currentSidebar, setCurrentSidebar] = useState<string>('layer1');
-  const [sidebarToggle, setSidebarToggle] = useState<boolean>(true);
+  const [sidebarToggle, setSidebarToggle] = useState<boolean>(false);
 
   const handleOnClick = (name: string) => {
     setCurrentSidebar(name);

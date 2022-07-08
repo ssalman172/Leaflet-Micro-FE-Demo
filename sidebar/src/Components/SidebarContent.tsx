@@ -27,7 +27,7 @@ const FormItemLabel = styled.label`
 `
 
 const SidebarContent = ({ currentSidebar }: Props) => {
-  const [currentLayer, setCurrentLayer] = useState<string>('OpenStreetMap');
+  const [currentLayer, setCurrentLayer] = useState<string>('StadiaAliadeSmoothDark');
 
   const handleChangeLayer = (layerName: string) => {
     setCurrentLayer(layerName);

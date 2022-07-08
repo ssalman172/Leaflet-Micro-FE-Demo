@@ -17,7 +17,7 @@ const Wrapper = styled.main`
 `
 
 const LeafletMap = () => {
-  const [currentTile, setCurrentTile] = useState('OpenStreetMap');
+  const [currentTile, setCurrentTile] = useState('StadiaAliadeSmoothDark');
 
   const changeLayer = (msg: string, data: string) => {
     setCurrentTile(data);
@@ -74,7 +74,7 @@ const LeafletMap = () => {
               attribution="Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community"
             />
           </BaseLayer>
-          <LayersControl.Overlay name="Show Overlays">
+          <LayersControl.Overlay checked name="Show Overlays">
             <Rectangle color='red' bounds={latLngBounds} />
           </LayersControl.Overlay>
         </LayersControl>
