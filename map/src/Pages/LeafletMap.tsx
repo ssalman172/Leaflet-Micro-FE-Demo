@@ -13,6 +13,7 @@ const Wrapper = styled.main`
   justify-content: center;
   align-items: center;
   margin-left: 0;
+  width: 100%;
 `
 
 const LeafletMap = () => {
@@ -44,7 +45,15 @@ const LeafletMap = () => {
 
   return (
     <Wrapper>
-      <MapContainer center={[-6.949496719488826, 107.61966920913646]} zoom={6} scrollWheelZoom={true}>
+      <MapContainer 
+        center={[-6.949496719488826, 107.61966920913646]} 
+        zoom={6} 
+        scrollWheelZoom={true}
+        style={{
+          borderRadius: '0 12px 12px 0',
+          width: '100%'
+        }}
+      >
         <LayersControl>
           <BaseLayer checked={currentTile === 'OpenStreetMap'} name="OpenStreetMap">
             <TileLayer

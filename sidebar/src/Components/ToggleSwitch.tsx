@@ -29,8 +29,8 @@ const Input = styled.input`
 const Label = styled.label`
   cursor: pointer;
 	text-indent: -9999px;
-	width: 60px;
-	height: 30px;
+	width: 40px;
+	height: 20px;
 	background: #334257;
 	display: block;
 	border-radius: 100px;
@@ -41,15 +41,15 @@ const Label = styled.label`
     position: absolute;
     top: 0px;
     left: 0px;
-    width: 30px;
-    height: 30px;
+    width: 20px;
+    height: 20px;
     background: #fff;
     border-radius: 90px;
     transition: 0.3s;
   }
 
   &:active:after {
-	  width: 40px;
+	  width: 25px;
   }
 `
 

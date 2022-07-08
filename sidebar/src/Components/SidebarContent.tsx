@@ -10,6 +10,7 @@ interface Props {
 
 const Form = styled.form`
   margin: 24px 12px;
+  text-align: left;
 `
 
 const FormItem = styled.div`
@@ -20,8 +21,9 @@ const FormItem = styled.div`
 `
 
 const FormItemLabel = styled.label`
-  font-size: 1.25rem;
+  font-size: 1rem;
   font-weight: 600;
+  max-width: 70%;
 `
 
 const SidebarContent = ({ currentSidebar }: Props) => {
