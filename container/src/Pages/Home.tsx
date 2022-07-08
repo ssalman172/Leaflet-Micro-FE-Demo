@@ -7,11 +7,10 @@ const LeafletMap = React.lazy(() => import("LeafletMap/LeafletMap"));
 
 const Wrapper = styled.main`
   display: flex;
-  margin-left: 48px;
-  margin-right: 48px;
+  margin: 1rem 48px 0 48px;
+  padding-bottom: 35px;
   font-size: calc(10px + 2vmin);
   color: white;
-  margin-top: 1rem;
 `
 
 const Home = () => {

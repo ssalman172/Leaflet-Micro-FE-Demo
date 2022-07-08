@@ -113,7 +113,7 @@ const Sidebar = () => {
               <IoLayersOutline />
             </NavigationListItem>
             <NavigationListItem name='layer2' currentSidebar={currentSidebar} onClick={() => handleOnClick('layer2')}>
-              <IoLayersSharp />
+              <IoLayers />
             </NavigationListItem>
             <NavigationListItem name='layer3' currentSidebar={currentSidebar} onClick={() => handleOnClick('layer3')}>
               <IoLayers />

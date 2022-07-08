@@ -53,7 +53,7 @@ const Label = styled.label`
   }
 `
 
-const ToggleSwitch = ({name, onChange, currentvalue}: Props) => {
+const ToggleSwitch = ({ name, onChange, currentvalue }: Props) => {
   return (
     <Wrapper>
       <Input type="checkbox" checked={name === currentvalue} onChange={onChange} id={name} />

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
-import { MapContainer, Marker, TileLayer, ImageOverlay, Popup, LayersControl } from 'react-leaflet'
+import { MapContainer, Marker, TileLayer, ImageOverlay, Popup, LayersControl, Rectangle } from 'react-leaflet'
 import 'leaflet/dist/leaflet.css';
 import { renderToStaticMarkup } from 'react-dom/server';
 import L, { divIcon } from 'leaflet';
@@ -45,9 +45,9 @@ const LeafletMap = () => {
 
   return (
     <Wrapper>
-      <MapContainer 
-        center={[-6.949496719488826, 107.61966920913646]} 
-        zoom={6} 
+      <MapContainer
+        center={[-6.949496719488826, 107.61966920913646]}
+        zoom={16}
         scrollWheelZoom={true}
         style={{
           borderRadius: '0 12px 12px 0',
@@ -74,6 +74,9 @@ const LeafletMap = () => {
               attribution="Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community"
             />
           </BaseLayer>
+          <LayersControl.Overlay name="Show Overlays">
+            <Rectangle color='red' bounds={latLngBounds} />
+          </LayersControl.Overlay>
         </LayersControl>
         <Marker eventHandlers={{ click: showOverlay }} position={[-6.949496719488826, 107.61966920913646]} icon={customMarkerIcon}>
           <Popup>PT Len Industri</Popup>

@@ -8,14 +8,18 @@ interface Props {
 
 const Wrapper = styled.footer<Props>`
   display: flex;
-  padding: 10px 48px;
+  padding-left: 48px;
+  margin: 0 !important;
   color: ${props => props.color || "black"};
   background: ${props => props.background || "white"};
   font-family: 'Sora', sans-serif;
   bottom:0;
   width: 100%;
   box-sizing: border-box;
+  position: fixed;
+  z-index: 9999;
   bottom: 0;
+  font-size: 11px;
 `
 
 const Footer = ({ background, color }: Props) => {
