@@ -15,7 +15,7 @@ interface NavItemProps {
   currentSidebar: string
 }
 
-interface ToggleBtnProps {
+interface SidebarProps {
   isToggled: boolean
 }
 
@@ -37,8 +37,9 @@ const WrapperLeft = styled.div`
   position: relative;
 `
 
-const WrapperRight = styled.div`
-  width: 240px;
+const WrapperRight = styled.div<SidebarProps>`
+  width: ${(props) => props.isToggled ? '240px' : '0'};
+  transition: width 0.2s linear;
 `
 
 const ContentLeft = styled.div`
@@ -71,7 +72,7 @@ const Logo = styled.div`
   font-size: 3rem;
 `
 
-const CloseButton = styled.div<ToggleBtnProps>`
+const CloseButton = styled.div<SidebarProps>`
   position: absolute;
   bottom: 0;
   display: flex;
@@ -124,10 +125,9 @@ const Sidebar = () => {
           </CloseButton>
         </ContentLeft>
       </WrapperLeft>
-      {sidebarToggle &&
-        <WrapperRight>
-          <SidebarContent currentSidebar={currentSidebar} />
-        </WrapperRight>}
+      <WrapperRight isToggled={sidebarToggle}>
+        <SidebarContent currentSidebar={currentSidebar} />
+      </WrapperRight>
     </Wrapper>
   )
 }
