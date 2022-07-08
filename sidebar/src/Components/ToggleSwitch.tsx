@@ -2,7 +2,9 @@ import React from 'react'
 import styled from 'styled-components'
 
 interface Props {
-  name: string
+  name: string,
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void,
+  currentvalue?: string,
 }
 
 const Wrapper = styled.div`
@@ -51,10 +53,10 @@ const Label = styled.label`
   }
 `
 
-const ToggleSwitch = ({name}: Props) => {
+const ToggleSwitch = ({name, onChange, currentvalue}: Props) => {
   return (
     <Wrapper>
-      <Input type="checkbox" id={name} />
+      <Input type="checkbox" checked={name === currentvalue} onChange={onChange} id={name} />
       <Label htmlFor={name}></Label>
     </Wrapper>
   )

@@ -7,11 +7,12 @@ interface Props {
   children: React.ReactNode
 }
 
-interface AccordionButtonProps {
+interface AccordionProps {
   isActive: boolean
 }
 
-const AccordionTitle = styled.div<AccordionButtonProps>`
+
+const AccordionTitle = styled.div<AccordionProps>`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -38,11 +39,13 @@ const AccordionTitle = styled.div<AccordionButtonProps>`
   }
 `
 
-const AccordionContent = styled.div`
+const AccordionContent = styled.div<AccordionProps>`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  min-height: 200px;
+  max-height: ${(props) => props.isActive ? '500px' : '0'};
+  overflow: hidden;
+  transition: max-height 0.3s linear;
   background: #161e2e;
 `
 
@@ -55,17 +58,15 @@ const Accordion = ({ title, children }: Props) => {
 
   return (
     <>
-      <AccordionTitle isActive={ isActive }>
+      <AccordionTitle isActive={isActive}>
         <p>{title}</p>
         <div onClick={() => handleAccordionActive()}>
           <IoChevronDownOutline />
         </div>
       </AccordionTitle>
-      { isActive &&
-        <AccordionContent>
-          {children}
-        </AccordionContent>
-      }
+      <AccordionContent isActive={isActive}>
+        {children}
+      </AccordionContent>
     </>
   )
 }

@@ -1,15 +1,15 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import Accordion from './Accordion'
 import ToggleSwitch from './ToggleSwitch'
-
+import PubSub from 'pubsub-js'
 
 interface Props {
   currentSidebar: string
 }
 
 const Form = styled.form`
-  margin: 0 12px;
+  margin: 24px 12px;
 `
 
 const FormItem = styled.div`
@@ -24,34 +24,47 @@ const FormItemLabel = styled.label`
   font-weight: 600;
 `
 
-const SidebarContent = ({currentSidebar}: Props) => {
+const SidebarContent = ({ currentSidebar }: Props) => {
+  const [currentLayer, setCurrentLayer] = useState<string>('OpenStreetMap');
+
+  const handleChangeLayer = (layerName: string) => {
+    setCurrentLayer(layerName);
+    PubSub.publish('MAP_LAYER', layerName);
+  }
+
   return (
     <>
-      { currentSidebar === 'layer1' &&
-        <Accordion title='Layers'>
-          <Form>
-            <FormItem>
-              <FormItemLabel>Terrain</FormItemLabel>
-              <ToggleSwitch name='terrain' />
-            </FormItem>
-            <FormItem>
-              <FormItemLabel>Traffic</FormItemLabel>
-              <ToggleSwitch name='traffic' />
-            </FormItem>
-            <FormItem>
-              <FormItemLabel>Transit</FormItemLabel>
-              <ToggleSwitch name='transit' />
-            </FormItem>
-          </Form>
-        </Accordion>
+      {currentSidebar === 'layer1' &&
+        <div>
+          <Accordion title='Layers'>
+            <Form>
+              <FormItem>
+                <FormItemLabel>OpenStreetMap</FormItemLabel>
+                <ToggleSwitch onChange={() => handleChangeLayer('OpenStreetMap')} currentvalue={currentLayer} name='OpenStreetMap' />
+              </FormItem>
+              <FormItem>
+                <FormItemLabel>Stadia Aliade Smooth Dark</FormItemLabel>
+                <ToggleSwitch onChange={() => handleChangeLayer('StadiaAliadeSmoothDark')} currentvalue={currentLayer} name='StadiaAliadeSmoothDark' />
+              </FormItem>
+              <FormItem>
+                <FormItemLabel>Esri Worldmagery</FormItemLabel>
+                <ToggleSwitch onChange={() => handleChangeLayer('EsriWorldmagery')} currentvalue={currentLayer} name='EsriWorldmagery' />
+              </FormItem>
+            </Form>
+          </Accordion>
+        </div>
       }
-      { currentSidebar === 'layer2' &&
-        <Accordion title='Gamma'>
-        </Accordion>
+      {currentSidebar === 'layer2' &&
+        <div>
+          <Accordion title='Gamma'>
+          </Accordion>
+        </div>
       }
-      { currentSidebar === 'layer3' &&
-        <Accordion title='Alpha'>
-        </Accordion>
+      {currentSidebar === 'layer3' &&
+        <div>
+          <Accordion title='Alpha'>
+          </Accordion>
+        </div>
       }
     </>
   )
