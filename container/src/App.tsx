@@ -6,7 +6,6 @@ const Header = React.lazy(() => import("HeaderFooter/Header"));
 // @ts-ignore
 const Footer = React.lazy(() => import("HeaderFooter/Footer"));
 
-
 function App() {
   return (
     <div className="App">

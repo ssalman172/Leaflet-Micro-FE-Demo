@@ -4,6 +4,17 @@ import styled from 'styled-components'
 const Sidebar = React.lazy(() => import("Sidebar/Sidebar"));
 // @ts-ignore
 const LeafletMap = React.lazy(() => import("LeafletMap/LeafletMap"));
+import { useQuery } from '@apollo/client';
+import { GET_COORDINATES } from "../GraphQL/Query";
+
+const getCoordinates = () => {
+  const { data } = useQuery(GET_COORDINATES);
+  try {
+    return data.latLng;
+  } catch (err) {
+    console.log("loading...");
+  }
+}
 
 const Wrapper = styled.main`
   display: flex;
@@ -18,7 +29,7 @@ const Home = () => {
     <>
       <Wrapper>
         <Sidebar />
-        <LeafletMap />
+        <LeafletMap coordinates={getCoordinates()} />
       </Wrapper>
     </>
   )

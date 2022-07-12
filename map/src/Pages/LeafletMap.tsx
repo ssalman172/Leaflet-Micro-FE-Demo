@@ -8,6 +8,10 @@ import { Airplane } from 'react-ionicons';
 import PubSub from 'pubsub-js';
 const { BaseLayer } = LayersControl;
 
+interface Props {
+  coordinates?: Array<any>
+}
+
 const Wrapper = styled.main`
   display: flex;
   justify-content: center;
@@ -16,7 +20,8 @@ const Wrapper = styled.main`
   width: 100%;
 `
 
-const LeafletMap = () => {
+const LeafletMap = (coordinates: Props) => {
+  const markerCoordinates = coordinates.coordinates;
   const [currentTile, setCurrentTile] = useState('StadiaAliadeSmoothDark');
 
   const changeLayer = (msg: string, data: string) => {
@@ -47,7 +52,7 @@ const LeafletMap = () => {
     <Wrapper>
       <MapContainer
         center={[-6.949496719488826, 107.61966920913646]}
-        zoom={16}
+        zoom={15}
         scrollWheelZoom={true}
         style={{
           borderRadius: '0 12px 12px 0',
@@ -78,9 +83,15 @@ const LeafletMap = () => {
             <Rectangle color='red' bounds={latLngBounds} />
           </LayersControl.Overlay>
         </LayersControl>
-        <Marker eventHandlers={{ click: showOverlay }} position={[-6.949496719488826, 107.61966920913646]} icon={customMarkerIcon}>
-          <Popup>PT Len Industri</Popup>
-        </Marker>
+        {markerCoordinates &&
+          markerCoordinates.map((coordinate) => {
+            return (
+              <Marker key={coordinate.name} eventHandlers={{ click: showOverlay }} position={[Number(coordinate.latitude), Number(coordinate.longitude)]} icon={customMarkerIcon}>
+                <Popup>{coordinate.name}</Popup>
+              </Marker>
+            );
+          })
+        }
       </MapContainer>
     </Wrapper>
   )
