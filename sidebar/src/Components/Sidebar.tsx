@@ -9,6 +9,10 @@ import {
 } from "react-icons/io5";
 import SidebarContent from './SidebarContent';
 
+interface Props {
+  tileLayers?: Array<any>
+}
+
 interface NavItemProps {
   isActive?: boolean
   name: string
@@ -89,7 +93,8 @@ const CloseButton = styled.div<SidebarProps>`
   }
 `
 
-const Sidebar = () => {
+const Sidebar = ({ tileLayers }: Props) => {
+  const tiles = tileLayers;
   const [currentSidebar, setCurrentSidebar] = useState<string>('layer1');
   const [sidebarToggle, setSidebarToggle] = useState<boolean>(false);
 
@@ -126,7 +131,7 @@ const Sidebar = () => {
         </ContentLeft>
       </WrapperLeft>
       <WrapperRight isToggled={sidebarToggle}>
-        <SidebarContent currentSidebar={currentSidebar} />
+        <SidebarContent currentSidebar={currentSidebar} tileLayers={tiles} />
       </WrapperRight>
     </Wrapper>
   )

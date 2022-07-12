@@ -9,3 +9,14 @@ export const GET_COORDINATES = gql`
     }
   }
 `;
+
+export const GET_TILE_LAYERS = gql`
+  query Layers {
+    layers {
+      key
+      url
+      attribution
+      maxNativeZoom
+    }
+  }
+`;

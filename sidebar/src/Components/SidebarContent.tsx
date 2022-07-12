@@ -5,7 +5,8 @@ import ToggleSwitch from './ToggleSwitch'
 import PubSub from 'pubsub-js'
 
 interface Props {
-  currentSidebar: string
+  currentSidebar: string,
+  tileLayers?: Array<any>
 }
 
 const Form = styled.form`
@@ -26,7 +27,7 @@ const FormItemLabel = styled.label`
   max-width: 70%;
 `
 
-const SidebarContent = ({ currentSidebar }: Props) => {
+const SidebarContent = ({ currentSidebar, tileLayers }: Props) => {
   const [currentLayer, setCurrentLayer] = useState<string>('StadiaAliadeSmoothDark');
 
   const handleChangeLayer = (layerName: string) => {
@@ -36,22 +37,19 @@ const SidebarContent = ({ currentSidebar }: Props) => {
 
   return (
     <>
-      {currentSidebar === 'layer1' &&
+      {(currentSidebar === 'layer1' && tileLayers) &&
         <div>
           <Accordion title='Layers'>
             <Form>
-              <FormItem>
-                <FormItemLabel>OpenStreetMap</FormItemLabel>
-                <ToggleSwitch onChange={() => handleChangeLayer('OpenStreetMap')} currentvalue={currentLayer} name='OpenStreetMap' />
-              </FormItem>
-              <FormItem>
-                <FormItemLabel>Stadia Aliade Smooth Dark</FormItemLabel>
-                <ToggleSwitch onChange={() => handleChangeLayer('StadiaAliadeSmoothDark')} currentvalue={currentLayer} name='StadiaAliadeSmoothDark' />
-              </FormItem>
-              <FormItem>
-                <FormItemLabel>Esri Worldmagery</FormItemLabel>
-                <ToggleSwitch onChange={() => handleChangeLayer('EsriWorldmagery')} currentvalue={currentLayer} name='EsriWorldmagery' />
-              </FormItem>
+              {tileLayers.map((layer) => {
+                return (
+                  <FormItem key={layer.key}>
+                    <FormItemLabel>{(layer.key).split(/(?=[A-Z])/).join(' ')}</FormItemLabel>
+                    <ToggleSwitch onChange={() => handleChangeLayer(layer.key)} currentvalue={currentLayer} name={layer.key} />
+                  </FormItem>
+                )
+              })
+              }
             </Form>
           </Accordion>
         </div>

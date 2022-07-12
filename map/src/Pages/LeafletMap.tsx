@@ -9,7 +9,8 @@ import PubSub from 'pubsub-js';
 const { BaseLayer } = LayersControl;
 
 interface Props {
-  coordinates?: Array<any>
+  coordinates?: Array<any>,
+  tileLayers?: Array<any>
 }
 
 const Wrapper = styled.main`
@@ -20,8 +21,10 @@ const Wrapper = styled.main`
   width: 100%;
 `
 
-const LeafletMap = (coordinates: Props) => {
-  const markerCoordinates = coordinates.coordinates;
+const LeafletMap = ({ coordinates, tileLayers }: Props) => {
+  const markerCoordinates = coordinates;
+  const layers = tileLayers;
+
   const [currentTile, setCurrentTile] = useState('StadiaAliadeSmoothDark');
 
   const changeLayer = (msg: string, data: string) => {
@@ -60,25 +63,18 @@ const LeafletMap = (coordinates: Props) => {
         }}
       >
         <LayersControl>
-          <BaseLayer checked={currentTile === 'OpenStreetMap'} name="OpenStreetMap">
-            <TileLayer
-              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-              attribution="&copy; <a href=&quot;https://www.openstreetmap.org/copyright&quot;>OpenStreetMap</a> contributors"
-            />
-          </BaseLayer>
-          <BaseLayer checked={currentTile === 'StadiaAliadeSmoothDark'} name="Stadia Aliade Smooth Dark">
-            <TileLayer
-              url="https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png"
-              attribution="&copy; Stadia Maps, &copy; OpenMapTiles &copy; OpenStreetMap contributors"
-              maxNativeZoom={20}
-            />
-          </BaseLayer>
-          <BaseLayer checked={currentTile === 'EsriWorldmagery'} name="Esri Worldmagery">
-            <TileLayer
-              url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}.png"
-              attribution="Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community"
-            />
-          </BaseLayer>
+          {layers &&
+            layers.map((layer) => {
+              return (
+                <BaseLayer key={layer.key} checked={currentTile === layer.key} name={(layer.key).split(/(?=[A-Z])/).join(' ')}>
+                  <TileLayer
+                    url={layer.url}
+                    attribution={layer.attribution}
+                  />
+                </BaseLayer>
+              )
+            })
+          }
           <LayersControl.Overlay checked name="Show Overlays">
             <Rectangle color='red' bounds={latLngBounds} />
           </LayersControl.Overlay>

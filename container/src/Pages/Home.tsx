@@ -5,15 +5,20 @@ const Sidebar = React.lazy(() => import("Sidebar/Sidebar"));
 // @ts-ignore
 const LeafletMap = React.lazy(() => import("LeafletMap/LeafletMap"));
 import { useQuery } from '@apollo/client';
-import { GET_COORDINATES } from "../GraphQL/Query";
+import { GET_COORDINATES, GET_TILE_LAYERS } from "../GraphQL/Query";
 
 const getCoordinates = () => {
   const { data } = useQuery(GET_COORDINATES);
   try {
     return data.latLng;
-  } catch (err) {
-    console.log("loading...");
-  }
+  } catch (err) { }
+}
+
+const getTileLayers = () => {
+  const { data } = useQuery(GET_TILE_LAYERS);
+  try {
+    return data.layers;
+  } catch (err) { }
 }
 
 const Wrapper = styled.main`
@@ -28,8 +33,8 @@ const Home = () => {
   return (
     <>
       <Wrapper>
-        <Sidebar />
-        <LeafletMap coordinates={getCoordinates()} />
+        <Sidebar tileLayers={getTileLayers()} />
+        <LeafletMap coordinates={getCoordinates()} tileLayers={getTileLayers()} />
       </Wrapper>
     </>
   )
