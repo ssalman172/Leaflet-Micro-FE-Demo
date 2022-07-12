@@ -1,0 +1,36 @@
+version: "3.8"
+
+services:
+  container:
+    container_name: container
+    image: container
+    build:
+      context: ./container
+      dockerfile: Dockerfile
+    ports:
+      - 3000:3000
+  map:
+    container_name: map
+    image: map
+    build:
+      context: ./map
+      dockerfile: Dockerfile
+    ports:
+      - 3001:3001
+  header:
+    container_name: header
+    image: header
+    build:
+      context: ./header
+      dockerfile: Dockerfile
+    ports:
+      - 3002:3002
+  sidebar:
+    container_name: sidebar
+    image: sidebar
+    build:
+      context: ./sidebar
+      dockerfile: Dockerfile
+    ports:
+      - 3003:3003
+  
