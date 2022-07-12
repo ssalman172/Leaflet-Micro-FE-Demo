@@ -20,12 +20,11 @@ export const updateOne = async (key: string, input: any) => {
   try {
     const TileMapToUpdate = await TileMap.findOne({ key: key });
 
-    if (TileMapToUpdate !== null) {
-      TileMapToUpdate.key = input?.key;
-      TileMapToUpdate.url = input?.url;
-      TileMapToUpdate.attribution = input?.attribution;
-      TileMapToUpdate.maxNativeZoom = input?.maxNativeZoom
-    }
+    Object.keys(input).forEach((value) => {
+      if (TileMapToUpdate !== null) {
+        (TileMapToUpdate as any)[value] = input[value] || (TileMapToUpdate as any)[value]
+      }
+    })
 
     return  await TileMapToUpdate?.save();
   } catch (error) {
